@@ -50,6 +50,7 @@ env:
   RESOURCE_GROUP: "aks-rg"
   CLUSTER_NAME: "testaksclu"
   DEPLOYMENT_MANIFEST_PATH: "./manifests"
+  IMAGE_TAG: ${{ github.sha }}
 
 jobs:
   buildImage:
@@ -103,6 +104,9 @@ jobs:
           cluster-name: ${{ env.CLUSTER_NAME }}
           admin: 'false'
           use-kubelogin: 'true'
+
+      - name: Substitue Variables
+        run: envsubst < deploy.yaml > deploy.yaml
 
       # Deploys application based on given manifest file
       - name: Deploys application
