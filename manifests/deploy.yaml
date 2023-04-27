@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weathapp
+  labels:
+    app: weathapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weathapp
+  template:
+    metadata:
+      labels:
+        app: weathapp
+    spec:
+      containers:
+      - name: weathapp
+        image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weathapp-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: weathapp
