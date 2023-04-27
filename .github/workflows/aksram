@@ -35,11 +35,11 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: "your-azure-container-registry"
-  CONTAINER_NAME: "your-container-name"
-  RESOURCE_GROUP: "your-resource-group"
-  CLUSTER_NAME: "your-cluster-name"
-  DEPLOYMENT_MANIFEST_PATH: "your-deployment-manifest-path"
+  AZURE_CONTAINER_REGISTRY: "testacri"
+  CONTAINER_NAME: "weathapp"
+  RESOURCE_GROUP: "aks-rg"
+  CLUSTER_NAME: "testaksclu"
+  DEPLOYMENT_MANIFEST_PATH: "./manifests"
 
 jobs:
   buildImage:
