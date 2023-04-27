@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: weathapp
-        image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+        image: $AZURE_CONTAINER_REGISTRY.azurecr.io/$CONTAINER_NAME:$github.sha
         ports:
         - containerPort: 80
 ---
