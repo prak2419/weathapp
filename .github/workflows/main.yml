@@ -105,8 +105,8 @@ jobs:
           admin: 'false'
           use-kubelogin: 'true'
 
-      - name: Substitue Variables
-        run: envsubst < ${{ env.DEPLOYMENT_MANIFEST_PATH }}/deploy.yaml > ${{ env.DEPLOYMENT_MANIFEST_PATH }}/deployment.yaml
+      #- name: Substitue Variables
+      #  run: envsubst < ${{ env.DEPLOYMENT_MANIFEST_PATH }}/deploy.yaml > ${{ env.DEPLOYMENT_MANIFEST_PATH }}/deployment.yaml
 
       # Deploys application based on given manifest file
       - name: Deploys application
