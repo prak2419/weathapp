@@ -106,12 +106,12 @@ jobs:
           use-kubelogin: 'true'
 
       - name: Substitue Variables
-        run: envsubst < ./manifests/deploy.yaml > ./manifests/deploy.yaml
+        run: envsubst < ${{ env.DEPLOYMENT_MANIFEST_PATH }}/deploy.yaml > ${{ env.DEPLOYMENT_MANIFEST_PATH }}/deployment.yaml
 
       # Deploys application based on given manifest file
       - name: Deploys application
         uses: Azure/k8s-deploy@v4
         with:
           action: deploy
-          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}/deployment.yaml
           images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
