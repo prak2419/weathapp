@@ -106,7 +106,7 @@ jobs:
           use-kubelogin: 'true'
 
       - name: Substitue Variables
-        run: envsubst < deploy.yaml > deploy.yaml
+        run: envsubst < ./manifests/deploy.yaml > ./manifests/deploy.yaml
 
       # Deploys application based on given manifest file
       - name: Deploys application
